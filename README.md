@@ -1,16 +1,35 @@
 # Demo
 
+## Password spray
 **Attacker**:
 
 Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
 <img width="774" alt="hydra" src="https://github.com/eric-conrad/c2-talk/assets/14989334/5889e132-8050-4136-a7a2-90c7fe344872">
 
-**Defender**:
-
-Count successful (4624) and failed (4625) logins:
+**Defender**: Count successful (4624) and failed (4625) logins:
 
 `Get-WinEvent -Path C:\labs\valkyrie-security-logons.evtx | Group-Object id -NoElement | sort count`
+
+## Use sprayed credentials to log in via Metasplot's psexec
+
+**Attacker**
+
+<img width="540" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/33b73450-2f72-4154-adb8-e4df73605205">
+
+**Defender**
+
+Service was created (before Defender killed it):
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx"; ID=7045}| fl`
+
+Windows Defender Antivirus killed the connection:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl`
+
+
+
+## afaef
 
 **Long tail analysis**: `Get-WinEvent -Path C:\labs\valkyrie-security.evtx | Group-Object id -NoElement | sort count`
 

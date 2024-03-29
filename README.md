@@ -4,6 +4,7 @@
 
 Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
+<img width="774" alt="hydra" src="https://github.com/eric-conrad/c2-talk/assets/14989334/5889e132-8050-4136-a7a2-90c7fe344872">
 
 **Defender**:
 

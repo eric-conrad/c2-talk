@@ -6,7 +6,7 @@
 
 Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
-<img width="774" alt="hydra" src="https://github.com/eric-conrad/c2-talk/assets/14989334/5889e132-8050-4136-a7a2-90c7fe344872">
+<img width="800" alt="hydra" src="https://github.com/eric-conrad/c2-talk/assets/14989334/5889e132-8050-4136-a7a2-90c7fe344872">
 
 ### Defender 
 
@@ -27,7 +27,7 @@ msf6 > set SMBPass W1nter2023!
 msf6 > exploit
 ```
 
-<img width="540" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/33b73450-2f72-4154-adb8-e4df73605205">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/33b73450-2f72-4154-adb8-e4df73605205">
 
 ### Defender
 
@@ -48,7 +48,7 @@ Windows Defender Antivirus killed the connection:
 ### Attacker
 `wmiexec.py fgaeta:W1nter2023\!@192.168.37.237`
 
-<img width="558" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/8d7f5896-91be-41d1-9b31-ac312b38ddd4">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/8d7f5896-91be-41d1-9b31-ac312b38ddd4">
 
 ### Defender
 
@@ -68,7 +68,7 @@ Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe
 
 Attacker uploads `plan.exe` via wmiexex.py's `lput`, tries to run it, and fails:
 
-<img width="495" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/4fd06aff-b3eb-4104-9fb8-20f0b9436408">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/4fd06aff-b3eb-4104-9fb8-20f0b9436408">
 
 ### Defender
 
@@ -92,11 +92,11 @@ The key difference: `-e x64/xor_dynamic`
 
 Upload and execute:
 
-<img width="400" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/15e2a3bc-083e-444a-8c6d-681ac8da9389">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/15e2a3bc-083e-444a-8c6d-681ac8da9389">
 
 Reverse meterpreter shell connects to Metasploit:
 
-<img width="403" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/313a979c-d5fe-4383-86f9-147d30a1d263">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/313a979c-d5fe-4383-86f9-147d30a1d263">
 
 ## Attacker runs getsystem
 
@@ -104,11 +104,11 @@ Reverse meterpreter shell connects to Metasploit:
 
 `getsystem` fails, so the attacker enables RDP
 
-<img width="397" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/758351dd-3b7c-4302-bd6f-e1783947191b">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/758351dd-3b7c-4302-bd6f-e1783947191b">
 
 The attacker then logs in via RDP and disables Windows Defender Antivirus:
 
-<img width="397" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/61b6b6a6-c0b8-420b-b644-600e058fa8f5">
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/61b6b6a6-c0b8-420b-b644-600e058fa8f5">
 
 ### Defender
 

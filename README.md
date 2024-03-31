@@ -116,5 +116,11 @@ Windows Defender Antivirus kills the `getsystem` command
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl | more`
 
+RDP is enabled:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*remotedesktop*"} | fl`
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx"; ID=7040}| Where {$_.Message -like "*remote*"} | fl`
+
 
 

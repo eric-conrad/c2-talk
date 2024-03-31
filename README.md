@@ -122,5 +122,10 @@ RDP is enabled:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx"; ID=7040}| Where {$_.Message -like "*remote*"} | fl`
 
+## Attacker runs getsystem again
+
+### Attacker steals a domain administrator token
+
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 
 

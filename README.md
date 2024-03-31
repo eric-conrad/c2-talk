@@ -1,4 +1,4 @@
-# Demo
+# Detecting Command and Control frameworks via Sysmon and Windows Event Logging
 
 ## Attacker launches password spray
 

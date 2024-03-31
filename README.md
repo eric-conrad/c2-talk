@@ -124,7 +124,7 @@ RDP is enabled:
 
 ## Attacker runs getsystem again
 
-### Attacker steals a domain administrator token
+### Getsystem is successful, so attacker steals a domain admin token
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 

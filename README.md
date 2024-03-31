@@ -98,22 +98,15 @@ Reverse meterpreter shell connects to Metasploit:
 
 <img width="403" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/313a979c-d5fe-4383-86f9-147d30a1d263">
 
-**Long tail analysis**: `Get-WinEvent -Path C:\labs\valkyrie-security.evtx | Group-Object id -NoElement | sort count`
+## Attacker runs getsystem
 
-**Service creation events**: `Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx"; ID=7045} | fl | more`
+### Attacker
 
-**Search for 'powershell -nop'**: `Get-WinEvent @{Path="C:\labs\valkyrie-security.evtx";id=4688}| Where {$_.Message -like "*powershell.exe -nop*"} | fl | more`
+<img width="397" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/758351dd-3b7c-4302-bd6f-e1783947191b">
 
-**Search for ADMIN\$**: `Get-WinEvent @{Path="C:\labs\valkyrie-security.evtx";id=4688}| Where {$_.Message -like "*ADMIN$*"} | fl`
+### Defender
 
-**Search for 'plan.exe'**: `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";} | Where {$_.Message -like "*plan.exe*"} | fl`
+Windows Defender Antivirus kills the `getsystem` command
 
-**Search for 'Remote Desktop'**: `Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx";id=7040} | Where {$_.Message -like "*Remote Desktop*"} | fl`
+`Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl | more`
 
-**Search for self-signed certificates** `Get-WinEvent @{Path="C:\labs\valkyrie-system.evtx";id=1056} | fl`
-
-**Account creation (on the domain controller)**: `Get-WinEvent @{Path="\labs\pegasus-security.evtx"; id=4720} | fl`
-
-**Account added to the domain admin group**: `Get-WinEvent @{Path="\labs\\pegasus-security.evtx"; id=4737} | fl`
-
-**Windows Defender**: `Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl | more`

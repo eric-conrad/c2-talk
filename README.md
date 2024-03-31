@@ -102,11 +102,19 @@ Reverse meterpreter shell connects to Metasploit:
 
 ### Attacker
 
+`getsystem` fails, so the attacker enables RDP
+
 <img width="397" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/758351dd-3b7c-4302-bd6f-e1783947191b">
+
+The attacker then logs in via RDP and disables Windows Defender Antivirus:
+
+<img width="397" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/61b6b6a6-c0b8-420b-b644-600e058fa8f5">
 
 ### Defender
 
 Windows Defender Antivirus kills the `getsystem` command
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl | more`
+
+
 

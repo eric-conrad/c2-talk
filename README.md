@@ -56,7 +56,7 @@ Microsoft Defender Antivirus: zero logs.
 
 Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe` and redirecting to the `ADMIN$` share:
 
-`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*ADMIN$*"}|fl`
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*ADMIN$*"} | fl`
 
 ## Attacker runs 'whoami -all':
 
@@ -66,7 +66,7 @@ Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe
 
 ### Defender
 
-Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";} | Where {$_.Message -like "*whoami*"}|fl
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";} | Where {$_.Message -like "*whoami*"} | fl`
 
 ## Attacker creates plan.exe with msfvenom:
 

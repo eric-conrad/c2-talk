@@ -72,6 +72,10 @@ Attacker uploads `plan.exe` via wmiexex.py's `lput`, tries to run it, and fails:
 
 ### Defender
 
+Upload:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=11} | Where {$_.Message -like "*plan.exe*"} | fl`
+
 The command executed:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*Image: C:\Users\fgaeta\plan.exe*"} | fl`
@@ -126,11 +130,13 @@ RDP is enabled:
 
 ### Attacker
 
-Getsystem is successful, so attacker steals a domain admin token
+`getsystem` is successful, so attacker steals a domain admin token
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 
 ### Defender
+
+Process migration:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=8} | Where {$_.Message -like "*plan.exe*"} | fl`
 

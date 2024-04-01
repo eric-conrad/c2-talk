@@ -128,4 +128,16 @@ RDP is enabled:
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 
+## Attacker becomes domain admin
 
+Attacker runs meterpreter's `shell` command:
+
+<img width="600" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/7e504872-01b2-405d-9db0-aa5d0f243bdf">
+
+Attacker creates a domain account:
+
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/59e66503-ad01-48d4-8fb8-947466c31bab">
+
+Atracker uses `wmic` to add new account to the domain admin group:
+
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/03ccc7b8-dbc5-4107-90a2-c97c2691a145">

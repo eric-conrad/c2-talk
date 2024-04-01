@@ -58,6 +58,16 @@ Sysmon event 1 (and security event 4688) shows `WmiPrvSE.exe` launching `cmd.exe
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=1} | Where {$_.Message -like "*ADMIN$*"}|fl`
 
+## Attacker runs 'whoami -all':
+
+### Attacker
+
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/c09027bf-d2b8-4ff0-93ac-e46214cbb6a9">
+
+### Defender
+
+Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";} | Where {$_.Message -like "*whoami*"}|fl
+
 ## Attacker creates plan.exe with msfvenom:
 
 ### Attacker

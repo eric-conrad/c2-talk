@@ -41,7 +41,7 @@ Command was executed (event 4688):
 
 Windows Defender Antivirus killed the connection:
 
-`Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | fl`
+`Get-WinEvent @{Path="C:\labs\valkyrie-defender.evtx";id=1117} | Where {$_.Message -like "*powershell.exe -nop*"} | fl`
 
 ## Attacker logs in with wmiexec.py:
 

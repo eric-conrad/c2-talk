@@ -102,6 +102,14 @@ Reverse meterpreter shell connects to Metasploit:
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/313a979c-d5fe-4383-86f9-147d30a1d263">
 
+### Defender
+
+Upload/execution: same events as before.
+
+Reverse shell connection to port 8080:
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=3} | Where {$_.Message -like "*plan.exe*"} | fl`
+
 ## Attacker runs getsystem
 
 ### Attacker

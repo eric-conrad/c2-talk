@@ -138,17 +138,17 @@ RDP is enabled:
 
 ### Attacker
 
-`getsystem` is successful, so attacker steals a domain admin token
+`getsystem` is successful, so attacker migrates the meterpreter DLL to another process and steals a domain admin token
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 
 ### Defender
 
-Nothing was logged during the token theft and impersonation of GALACTICA/Administrator.
-
 Process migration:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=8} | Where {$_.Message -like "*plan.exe*"} | fl`
+
+Nothing was logged during the token theft and impersonation of GALACTICA/Administrator.
 
 ## Attacker becomes domain admin
 
@@ -168,11 +168,15 @@ Atracker uses `wmic` to add new account to the domain admin group:
 
 ### Defender
 
+Account creation: 
+
+`Get-WinEvent @{Path="\labs\pegasus-security.evtx"; id=4720} | fl`
+
 New domain admin:
 
 `Get-WinEvent @{Path="\labs\\pegasus-security.evtx"; id=4737} | fl`
 
-## Attacker RDPs into domain control and verifies they are a domain admin
+## Attacker RDPs into domain controller and verifies they are a domain admin
 
 ### Attacker
 

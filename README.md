@@ -124,11 +124,17 @@ RDP is enabled:
 
 ## Attacker runs getsystem again
 
+### Attacker
+
 ### Getsystem is successful, so attacker steals a domain admin token
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/e9e34e3c-b2c1-4447-9f7b-b279f548a860">
 
+### Defender
+
 ## Attacker becomes domain admin
+
+### Attacker
 
 Attacker runs meterpreter's `shell` command:
 
@@ -141,3 +147,15 @@ Attacker creates a domain account:
 Atracker uses `wmic` to add new account to the domain admin group:
 
 <img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/03ccc7b8-dbc5-4107-90a2-c97c2691a145">
+
+### Defender
+
+## Attacker RDPs into domain control and verifies they are a domain admin
+
+### Attacker
+
+<img width="600" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/528b395c-f4fc-484c-b1db-e62f4773ec41">
+
+<img width="600" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/3be7a9c6-f637-48ed-b359-31c6cfcad1c5">
+
+

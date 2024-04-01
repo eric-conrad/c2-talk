@@ -136,6 +136,8 @@ RDP is enabled:
 
 ### Defender
 
+Nothing was logged during the token theft and impersonation of GALACTICA/Administrator.
+
 Process migration:
 
 `Get-WinEvent @{Path="C:\labs\valkyrie-sysmon.evtx";id=8} | Where {$_.Message -like "*plan.exe*"} | fl`
@@ -158,6 +160,10 @@ Atracker uses `wmic` to add new account to the domain admin group:
 
 ### Defender
 
+New domain admin:
+
+`Get-WinEvent @{Path="\labs\\pegasus-security.evtx"; id=4737} | fl`
+
 ## Attacker RDPs into domain control and verifies they are a domain admin
 
 ### Attacker
@@ -166,4 +172,13 @@ Atracker uses `wmic` to add new account to the domain admin group:
 
 <img width="600" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/3be7a9c6-f637-48ed-b359-31c6cfcad1c5">
 
+## Final step: attacker clears the logs
+
+### Attacker
+
+<img width="800" alt="image" src="https://github.com/eric-conrad/c2-talk/assets/14989334/1077709e-e5f3-44c0-a313-c4cf80cdd608">
+
+### Defender
+
+`Get-WinEvent @{Path="C:\labs\valkyrie-security.evtx"; id=1102} | fl`
 
